@@ -2,9 +2,9 @@ package is.hi.hbv.confirmpay.ConfirmPay.Model;
 
 import javax.persistence.*;
 import java.time.*;
+import java.util.Date;
 import java.util.List;
 
-import is.hi.hbv.confirmpay.ConfirmPay.Model.PaymentMethod;
 
 @Entity
 public class Event {
@@ -13,9 +13,10 @@ public class Event {
     private long id;
     /* title? */
     private String name;
-    private LocalDate date;
+
+    private Date eDate;
     private double priceCat;
-    private long ownerId;
+    private long eventOwner;
     @Lob
     private String description;
     private int maxParticipants;
@@ -32,13 +33,13 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, double priceCat, long ownerId, String description,
+    public Event(String name, Date date, double priceCat, long ownerId, String description,
                  int maxParticipants, int minParticipants, boolean isPublic,
-                 boolean isRefundPossible, boolean isActive, PaymentMethod paymentMethod ){
+                 boolean isRefundPossible, PaymentMethod paymentMethod ){
         this.name = name;
-        this.date = LocalDate.now();
+        this.eDate = date;
         this.priceCat = priceCat;
-        this.ownerId = ownerId;
+        this.eventOwner = ownerId;
         this.description = description;
         this.maxParticipants = maxParticipants;
         this.minParticipants = minParticipants;
@@ -70,12 +71,12 @@ public class Event {
         this.name = name;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public Date geteDate() {
+        return eDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void seteDate(Date eDate) {
+        this.eDate = eDate;
     }
 
     public double getPriceCat() {
@@ -87,11 +88,11 @@ public class Event {
     }
 
     public long getOwnerId() {
-        return ownerId;
+        return eventOwner;
     }
 
     public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+        this.eventOwner = ownerId;
     }
 
     public String getDescription() {
@@ -135,6 +136,7 @@ public class Event {
     }
 
     public boolean isActive() {
+        // TODO: Sjá hvort event sé búið.. ef svo er þá breyta isActive í false
         return isActive;
     }
 

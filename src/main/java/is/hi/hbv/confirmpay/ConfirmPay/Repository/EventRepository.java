@@ -8,9 +8,10 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long> {
     Event save(Event event);
     List<Event> findAll();
+    // gæti verið nauðsynlegt að láta þetta returna Optional<Event>
     Event findById(long id);
-    List<Event> findByOwnerId(long id);
-    List<Event> findAllByPublicIs(boolean isPublic);
+    List<Event> findByEventOwner(long id);
+    List<Event> findAllByisPublic(boolean isPublic);
     void delete(Event event);
 
 }

@@ -7,6 +7,7 @@ import is.hi.hbv.confirmpay.ConfirmPay.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -43,12 +44,12 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public List<Customer> findByNameIn(String name) {
-        return repository.findAllByNameIn(name);
+        return repository.findAllBycNameIn(name);
     }
 
     @Override
     public Customer findByName(String name) {
-        return repository.findByName(name);
+        return repository.findBycName(name);
     }
 
     @Override
@@ -74,5 +75,12 @@ public class CustomerServiceImplementation implements CustomerService {
         }
         return null;
 
+    }
+
+    @Override
+    public Boolean isLoggedIn(HttpSession session) {
+        Customer customer = (Customer) session.getAttribute("loggedInUser");
+        if(customer==null) return false;
+        return true;
     }
 }

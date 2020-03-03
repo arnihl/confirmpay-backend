@@ -35,13 +35,13 @@ public class EventServiceImplementation implements EventService {
 
     @Override
     public List<Event> findByOwnerId(long id) {
-        return repository.findByOwnerId(id);
+        return repository.findByEventOwner(id);
     }
 
     @Override
     public List<Event> findNewestPublic(boolean isPublic) {
         // TODO: raða í nýjast fyrst.
-        return repository.findAllByPublicIs(isPublic);
+        return repository.findAllByisPublic(isPublic);
     }
 
     @Override

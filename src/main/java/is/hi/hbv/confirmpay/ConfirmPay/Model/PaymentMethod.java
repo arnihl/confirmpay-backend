@@ -5,11 +5,12 @@ import sun.tools.jstat.OptionOutputFormatter;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 
 @Embeddable
 public class PaymentMethod {
-    private String name;
+    private String pName;
     private String nameOfPayer;
     private String SSN;
     private String cardType; //MasterCard, Visa, etc.
@@ -19,14 +20,14 @@ public class PaymentMethod {
     private String email;
     @Column(nullable = true)
     private long ownerId; // finna út hvernig optional virkar almennilega!
-    private LocalDate date;
+    private Date pDate;
     public PaymentMethod() {
     }
 
     public PaymentMethod(String name, String nameOfPayer,
                          String SSN, String cardType, String cardNo,
-                         String expirationDate, String securityNo, String email) {
-        this.name = name;
+                         String expirationDate, String securityNo, String email, Date date) {
+        this.pName = name;
         this.nameOfPayer = nameOfPayer;
         this.SSN = SSN;
         this.cardType = cardType;
@@ -34,13 +35,13 @@ public class PaymentMethod {
         this.expirationDate = expirationDate;
         this.securityNo = securityNo;
         this.email = email;
-        this.date = LocalDate.now();
+        this.pDate = date;
     }
     // annar constructor fyrir optional ownerId;
     public PaymentMethod(String name, String nameOfPayer,
                          String SSN, String cardType, String cardNo,
-                         String expirationDate, String securityNo, String email, Optional<Long> ownerId) {
-        this.name = name;
+                         String expirationDate, String securityNo, String email, Date date, long ownerId) {
+        this.pName = name;
         this.nameOfPayer = nameOfPayer;
         this.SSN = SSN;
         this.cardType = cardType;
@@ -48,16 +49,16 @@ public class PaymentMethod {
         this.expirationDate = expirationDate;
         this.securityNo = securityNo;
         this.email = email;
-        this.ownerId = ownerId.get();
-        this.date = LocalDate.now();
+        this.ownerId = ownerId;
+        this.pDate = date;
     }
 
     public String getName() {
-        return name;
+        return pName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String pName) {
+        this.pName = pName;
     }
 
     public String getNameOfPayer() {
@@ -116,7 +117,7 @@ public class PaymentMethod {
         this.email = email;
     }
 
-    public Optional getOwnerId() {
+    public Optional<Long> getOwnerId() {
         return Optional.ofNullable(ownerId);
     }
 
@@ -124,11 +125,11 @@ public class PaymentMethod {
         this.ownerId = ownerId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public Date getpDate() {
+        return pDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setpDate(Date pDate) {
+        this.pDate = pDate;
     }
 }

@@ -2,7 +2,7 @@ package is.hi.hbv.confirmpay.ConfirmPay.Model;
 
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Customer {
@@ -10,8 +10,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(unique = true)
-    private String name;
-    private LocalDate date;
+    private String cName;
+    private Date cDate;
     private int numOfEvents;
     private double rating;
     private String password;
@@ -20,10 +20,10 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, int numOfEvents,
+    public Customer(String name, Date date, int numOfEvents,
                     double rating, String password, String email) {
-        this.name = name;
-        this.date = LocalDate.now();
+        this.cName = name;
+        this.cDate = date;
         this.numOfEvents = numOfEvents;
         this.rating = rating;
         this.password = password;
@@ -35,19 +35,19 @@ public class Customer {
     }
 
     public String getName() {
-        return name;
+        return cName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String cName) {
+        this.cName = cName;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public Date getcDate() {
+        return cDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setcDate(Date cDate) {
+        this.cDate = cDate;
     }
 
     public int getNumOfEvents() {

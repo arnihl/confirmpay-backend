@@ -2,6 +2,7 @@ package is.hi.hbv.confirmpay.ConfirmPay.Service;
 
 import is.hi.hbv.confirmpay.ConfirmPay.Model.Customer;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface CustomerService {
@@ -12,5 +13,6 @@ public interface CustomerService {
     List<Customer> findByNameIn(String name);
     void delete(Customer customer);
     Customer login(Customer customer);
+    Boolean isLoggedIn(HttpSession session);
 
 }
