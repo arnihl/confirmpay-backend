@@ -97,7 +97,7 @@ public class EventController {
     public void makeEvents(){
         // TODO: Búa til dummy gögn
         PaymentMethod pm = new PaymentMethod("John Shooter", "John George Shooter the 3rd","0303834589", "MasterCard", "8734918293847162", "0712", "221", "shooter@gmail.com" , new Date());
-        Event e1 = new Event("Funding Event!", new Date(), 100.1, 1L, "Let's cure the corona virus", -1, -1, true,false,pm);
+        Event e1 = new Event("Funding Event!", new Date(), 100.1, 1L, "Support fund for victims of the Corona virus", -1, -1, true,false,pm);
         Event e2 = new Event("Ferðalag til himalaya", new Date(), 200000.0, 0L, "Ferð Lionsklúbbsins Libra til Himalaya", 10,10,false,true,pm);
         eventService.save(e1);
         eventService.save(e2);
