@@ -1,6 +1,8 @@
 package is.hi.hbv.confirmpay.ConfirmPay.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,12 +11,14 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cName;
     private Date cDate;
     private int numOfEvents;
     private double rating;
+    @Column(nullable = false)
     private String password;
+    @Column(unique = true, nullable = false)
     private String email;
 
     public Customer() {
@@ -66,6 +70,7 @@ public class Customer {
         this.rating = rating;
     }
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String getPassword() {
         return password;
     }

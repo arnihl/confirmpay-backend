@@ -44,7 +44,7 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public List<Customer> findByNameIn(String name) {
-        return repository.findAllBycNameIn(name);
+        return repository.findAllBycNameContaining(name);
     }
 
     @Override

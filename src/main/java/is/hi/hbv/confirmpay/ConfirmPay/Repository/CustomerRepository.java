@@ -10,7 +10,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findAll();
     Customer findById(long id);
     Customer findBycName(String name);
-    List<Customer> findAllBycNameIn(String name);
+    List<Customer> findAllBycNameContaining(String name);
     void delete(Customer customer);
 
 
