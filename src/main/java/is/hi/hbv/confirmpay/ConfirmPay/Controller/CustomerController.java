@@ -82,7 +82,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/make-customers", method = RequestMethod.GET)
     public void makeCustomers(){
-        Customer c1 = new Customer("Summone Tufak", new Date(), 0, 5.0,"password","summon@gmail.com");
+        Customer c1 = new Customer("Summon snow", new Date(), 0, 5.0,"password","summon@gmail.com");
         Customer c2 = new Customer("Sofa king", new Date(), 0, 5.0,"password", "sofa@gmail.com");
         Customer c3 = new Customer("John Shooter", new Date(), 0, 5.0, "password", "john@gmail.com" );
         service.save(c1);
