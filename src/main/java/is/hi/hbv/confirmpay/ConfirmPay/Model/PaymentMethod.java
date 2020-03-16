@@ -1,10 +1,8 @@
 package is.hi.hbv.confirmpay.ConfirmPay.Model;
 
-import sun.tools.jstat.OptionOutputFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
