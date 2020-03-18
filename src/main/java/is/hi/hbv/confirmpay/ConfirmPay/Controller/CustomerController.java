@@ -34,6 +34,8 @@ public class CustomerController {
         Customer exists = service.findByName(customer.getName());
         if(exists == null) {
             customer.setcDate(new Date());
+            customer.setNumOfEvents(0);
+            customer.setRating(5.0);
             return service.save(customer);
         }
         else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username is taken");
