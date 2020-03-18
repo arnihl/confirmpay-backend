@@ -33,6 +33,7 @@ public class CustomerController {
         }
         Customer exists = service.findByName(customer.getName());
         if(exists == null) {
+            customer.setcDate(new Date());
             return service.save(customer);
         }
         else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username is taken");
@@ -111,8 +112,6 @@ public class CustomerController {
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id: " + id);
     }
-
-    // TODO: útfæra borgunaraðferð hér eða í eventcontroller
 
 
 }
